@@ -161,7 +161,7 @@ function get_variables {
     if [ $front_clone_from == 1 ]; then
         ui_address="https://gitee.com/yllan/ferry_web.git"
     elif [ $front_clone_from == 2 ]; then
-        ui_address="https://github.com/lanyulei/ferry_web.git"
+        ui_address="https://github.com/horizon365/ferry_web.git"
     else
         ui_address=${front_clone_from}
     fi
@@ -185,29 +185,29 @@ EOF
 }
 
 function install_front {
-    echo_green "\n>>> $(gettext '开始拉取前端程序...')"
-    read_from_input confirm "$(gettext '此处会执行 rm -rf ./ferry_web 的命令，若此命令不会造成当前环境的损伤则请继续')?" "y/n[y]" "y"
-    if [[ "${confirm}" != "y" ]]; then
-        echo_red "结束此次编译"
-        exit 1
-    fi
+    # echo_green "\n>>> $(gettext '开始拉取前端程序...')"
+    # read_from_input confirm "$(gettext '此处会执行 rm -rf ./ferry_web 的命令，若此命令不会造成当前环境的损伤则请继续')?" "y/n[y]" "y"
+    # if [[ "${confirm}" != "y" ]]; then
+    #     echo_red "结束此次编译"
+    #     exit 1
+    # fi
 
 
-    if [ -d "${BASE_DIR}/ferry_web" ]; then
-        echo_green "\n>>> $(gettext '请稍等，正在删除 ferry_web ...')"
-        rm -rf ${BASE_DIR}/ferry_web
-    fi
-    git clone $ui_address 
+    # if [ -d "${BASE_DIR}/ferry_web" ]; then
+    #     echo_green "\n>>> $(gettext '请稍等，正在删除 ferry_web ...')"
+    #     rm -rf ${BASE_DIR}/ferry_web
+    # fi
+    # git clone $ui_address 
 
-    if [ "$?" -ne 0 ];then
-        echo_red "克隆代码失败，请检查git地址: ${ui_address}或者网络质量"
-        exit 1
-    fi
+    # if [ "$?" -ne 0 ];then
+    #     echo_red "克隆代码失败，请检查git地址: ${ui_address}或者网络质量"
+    #     exit 1
+    # fi
     config_front
     echo_green "\n>>> $(gettext '开始安装前端依赖...')"
     cnpm_base_dir=$(dirname $(dirname $(which npm)))
-    npm install -g cnpm --registry=https://registry.npm.taobao.org --prefix ${cnpm_base_dir}
-    cd ferry_web && cnpm install && npm run build:prod && cp -r web ../build/template && cp -r web/static/* ../build/static/
+    npm install --registry=https://registry.npm.taobao.org
+    cd ferry_web && npm i && npm run build:prod && cp -r web ../build/template && cp -r web/static/* ../build/static/
 
 }
 
@@ -234,7 +234,7 @@ function install_backend {
     fi
     cp -r ${BASE_DIR}/ferry ${BASE_DIR}/build/
     cd ${BASE_DIR}/build 
-    ${BASE_DIR}/build/ferry init -c=config/settings.yml
+    ${BASE_DIR}/build/ferry init -c=config/settings.yml  #初始化数据库使用
     cd - &>/dev/null
 }
 
