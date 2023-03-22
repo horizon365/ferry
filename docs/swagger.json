@@ -1,267 +1,9 @@
 {
     "swagger": "2.0",
     "info": {
-        "description": "基于Gin + Vue + Element UI前后端分离的工单系统的接口文档\n添加qq群: 1127401830 进入技术交流群 请备注，谢谢！",
-        "title": "ferry API",
-        "contact": {},
-        "license": {
-            "name": "MIT",
-            "url": "https://github.com/lanyulei/ferry/blob/master/LICENSE"
-        },
-        "version": "0.0.1"
+        "contact": {}
     },
     "paths": {
-        "/api/v1/config": {
-            "put": {
-                "security": [
-                    {
-                        "Bearer": []
-                    }
-                ],
-                "description": "获取JSON",
-                "consumes": [
-                    "application/json"
-                ],
-                "tags": [
-                    "配置"
-                ],
-                "summary": "修改配置",
-                "parameters": [
-                    {
-                        "description": "body",
-                        "name": "data",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "object",
-                            "$ref": "#/definitions/models.SysConfig"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{\"code\": -1, \"message\": \"添加失败\"}",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/v1/config/{configId}": {
-            "get": {
-                "security": [
-                    {
-                        "": []
-                    }
-                ],
-                "description": "获取JSON",
-                "tags": [
-                    "配置"
-                ],
-                "summary": "获取配置",
-                "parameters": [
-                    {
-                        "type": "integer",
-                        "description": "配置编码",
-                        "name": "configId",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{\"code\": 200, \"data\": [...]}",
-                        "schema": {
-                            "$ref": "#/definitions/app.Response"
-                        }
-                    }
-                }
-            },
-            "delete": {
-                "description": "删除数据",
-                "tags": [
-                    "配置"
-                ],
-                "summary": "删除配置",
-                "parameters": [
-                    {
-                        "type": "integer",
-                        "description": "configId",
-                        "name": "configId",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{\"code\": -1, \"message\": \"删除失败\"}",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/v1/configKey/{configKey}": {
-            "get": {
-                "security": [
-                    {
-                        "": []
-                    }
-                ],
-                "description": "获取JSON",
-                "tags": [
-                    "配置"
-                ],
-                "summary": "获取配置",
-                "parameters": [
-                    {
-                        "type": "integer",
-                        "description": "configKey",
-                        "name": "configKey",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{\"code\": 200, \"data\": [...]}",
-                        "schema": {
-                            "$ref": "#/definitions/app.Response"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/v1/configList": {
-            "get": {
-                "security": [
-                    {
-                        "": []
-                    }
-                ],
-                "description": "获取JSON",
-                "tags": [
-                    "配置"
-                ],
-                "summary": "配置列表数据",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "configKey",
-                        "name": "configKey",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
-                        "description": "configName",
-                        "name": "configName",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
-                        "description": "configType",
-                        "name": "configType",
-                        "in": "query"
-                    },
-                    {
-                        "type": "integer",
-                        "description": "页条数",
-                        "name": "pageSize",
-                        "in": "query"
-                    },
-                    {
-                        "type": "integer",
-                        "description": "页码",
-                        "name": "pageIndex",
-                        "in": "query"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{\"code\": 200, \"data\": [...]}",
-                        "schema": {
-                            "$ref": "#/definitions/app.Response"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/v1/db/columns/page": {
-            "get": {
-                "description": "数据库表列分页列表 / database table column page list",
-                "tags": [
-                    "工具 / Tools"
-                ],
-                "summary": "分页列表数据 / page list data",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "tableName / 数据表名称",
-                        "name": "tableName",
-                        "in": "query"
-                    },
-                    {
-                        "type": "integer",
-                        "description": "pageSize / 页条数",
-                        "name": "pageSize",
-                        "in": "query"
-                    },
-                    {
-                        "type": "integer",
-                        "description": "pageIndex / 页码",
-                        "name": "pageIndex",
-                        "in": "query"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{\"code\": 200, \"data\": [...]}",
-                        "schema": {
-                            "$ref": "#/definitions/app.Response"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/v1/db/tables/page": {
-            "get": {
-                "description": "数据库表分页列表 / database table page list",
-                "tags": [
-                    "工具 / Tools"
-                ],
-                "summary": "分页列表数据 / page list data",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "tableName / 数据表名称",
-                        "name": "tableName",
-                        "in": "query"
-                    },
-                    {
-                        "type": "integer",
-                        "description": "pageSize / 页条数",
-                        "name": "pageSize",
-                        "in": "query"
-                    },
-                    {
-                        "type": "integer",
-                        "description": "pageIndex / 页码",
-                        "name": "pageIndex",
-                        "in": "query"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{\"code\": 200, \"data\": [...]}",
-                        "schema": {
-                            "$ref": "#/definitions/app.Response"
-                        }
-                    }
-                }
-            }
-        },
         "/api/v1/dept": {
             "put": {
                 "security": [
@@ -291,8 +33,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "type": "object",
-                            "$ref": "#/definitions/models.Dept"
+                            "$ref": "#/definitions/system.Dept"
                         }
                     }
                 ],
@@ -326,8 +67,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "type": "object",
-                            "$ref": "#/definitions/models.Dept"
+                            "$ref": "#/definitions/system.Dept"
                         }
                     }
                 ],
@@ -445,399 +185,6 @@
                 }
             }
         },
-        "/api/v1/dict/data": {
-            "put": {
-                "security": [
-                    {
-                        "Bearer": []
-                    }
-                ],
-                "description": "获取JSON",
-                "consumes": [
-                    "application/json"
-                ],
-                "tags": [
-                    "字典数据"
-                ],
-                "summary": "修改字典数据",
-                "parameters": [
-                    {
-                        "description": "body",
-                        "name": "data",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "object",
-                            "$ref": "#/definitions/models.DictType"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{\"code\": -1, \"message\": \"添加失败\"}",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            },
-            "post": {
-                "security": [
-                    {
-                        "Bearer": []
-                    }
-                ],
-                "description": "获取JSON",
-                "consumes": [
-                    "application/json"
-                ],
-                "tags": [
-                    "配置"
-                ],
-                "summary": "添加配置",
-                "parameters": [
-                    {
-                        "description": "data",
-                        "name": "data",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "object",
-                            "$ref": "#/definitions/models.SysConfig"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{\"code\": -1, \"message\": \"添加失败\"}",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/v1/dict/data/list": {
-            "get": {
-                "security": [
-                    {
-                        "": []
-                    }
-                ],
-                "description": "获取JSON",
-                "tags": [
-                    "字典数据"
-                ],
-                "summary": "字典数据列表",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "status",
-                        "name": "status",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
-                        "description": "dictCode",
-                        "name": "dictCode",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
-                        "description": "dictType",
-                        "name": "dictType",
-                        "in": "query"
-                    },
-                    {
-                        "type": "integer",
-                        "description": "页条数",
-                        "name": "pageSize",
-                        "in": "query"
-                    },
-                    {
-                        "type": "integer",
-                        "description": "页码",
-                        "name": "pageIndex",
-                        "in": "query"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{\"code\": 200, \"data\": [...]}",
-                        "schema": {
-                            "$ref": "#/definitions/app.Response"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/v1/dict/data/{dictCode}": {
-            "get": {
-                "security": [
-                    {
-                        "": []
-                    }
-                ],
-                "description": "获取JSON",
-                "tags": [
-                    "字典数据"
-                ],
-                "summary": "通过编码获取字典数据",
-                "parameters": [
-                    {
-                        "type": "integer",
-                        "description": "字典编码",
-                        "name": "dictCode",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{\"code\": 200, \"data\": [...]}",
-                        "schema": {
-                            "$ref": "#/definitions/app.Response"
-                        }
-                    }
-                }
-            },
-            "delete": {
-                "description": "删除数据",
-                "tags": [
-                    "字典数据"
-                ],
-                "summary": "删除字典数据",
-                "parameters": [
-                    {
-                        "type": "integer",
-                        "description": "dictCode",
-                        "name": "dictCode",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{\"code\": -1, \"message\": \"删除失败\"}",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/v1/dict/databyType/{dictType}": {
-            "get": {
-                "security": [
-                    {
-                        "": []
-                    }
-                ],
-                "description": "获取JSON",
-                "tags": [
-                    "字典数据"
-                ],
-                "summary": "通过字典类型获取字典数据",
-                "parameters": [
-                    {
-                        "type": "integer",
-                        "description": "dictType",
-                        "name": "dictType",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{\"code\": 200, \"data\": [...]}",
-                        "schema": {
-                            "$ref": "#/definitions/app.Response"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/v1/dict/type": {
-            "put": {
-                "security": [
-                    {
-                        "Bearer": []
-                    }
-                ],
-                "description": "获取JSON",
-                "consumes": [
-                    "application/json"
-                ],
-                "tags": [
-                    "字典类型"
-                ],
-                "summary": "修改字典类型",
-                "parameters": [
-                    {
-                        "description": "body",
-                        "name": "data",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "object",
-                            "$ref": "#/definitions/models.DictType"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{\"code\": -1, \"message\": \"添加失败\"}",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            },
-            "post": {
-                "security": [
-                    {
-                        "Bearer": []
-                    }
-                ],
-                "description": "获取JSON",
-                "consumes": [
-                    "application/json"
-                ],
-                "tags": [
-                    "字典类型"
-                ],
-                "summary": "添加字典类型",
-                "parameters": [
-                    {
-                        "description": "data",
-                        "name": "data",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "object",
-                            "$ref": "#/definitions/models.DictType"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{\"code\": -1, \"message\": \"添加失败\"}",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/v1/dict/type/list": {
-            "get": {
-                "security": [
-                    {
-                        "": []
-                    }
-                ],
-                "description": "获取JSON",
-                "tags": [
-                    "字典类型"
-                ],
-                "summary": "字典类型列表数据",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "dictName",
-                        "name": "dictName",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
-                        "description": "dictId",
-                        "name": "dictId",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
-                        "description": "dictType",
-                        "name": "dictType",
-                        "in": "query"
-                    },
-                    {
-                        "type": "integer",
-                        "description": "页条数",
-                        "name": "pageSize",
-                        "in": "query"
-                    },
-                    {
-                        "type": "integer",
-                        "description": "页码",
-                        "name": "pageIndex",
-                        "in": "query"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{\"code\": 200, \"data\": [...]}",
-                        "schema": {
-                            "$ref": "#/definitions/app.Response"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/v1/dict/type/{dictId}": {
-            "get": {
-                "security": [
-                    {
-                        "": []
-                    }
-                ],
-                "description": "获取JSON",
-                "tags": [
-                    "字典类型"
-                ],
-                "summary": "通过字典id获取字典类型",
-                "parameters": [
-                    {
-                        "type": "integer",
-                        "description": "字典类型编码",
-                        "name": "dictId",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{\"code\": 200, \"data\": [...]}",
-                        "schema": {
-                            "$ref": "#/definitions/app.Response"
-                        }
-                    }
-                }
-            },
-            "delete": {
-                "description": "删除数据",
-                "tags": [
-                    "字典类型"
-                ],
-                "summary": "删除字典类型",
-                "parameters": [
-                    {
-                        "type": "integer",
-                        "description": "dictId",
-                        "name": "dictId",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{\"code\": -1, \"message\": \"删除失败\"}",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            }
-        },
         "/api/v1/loginlog": {
             "put": {
                 "security": [
@@ -860,8 +207,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "type": "object",
-                            "$ref": "#/definitions/models.LoginLog"
+                            "$ref": "#/definitions/system.LoginLog"
                         }
                     }
                 ],
@@ -895,8 +241,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "type": "object",
-                            "$ref": "#/definitions/models.LoginLog"
+                            "$ref": "#/definitions/system.LoginLog"
                         }
                     }
                 ],
@@ -1144,8 +489,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "type": "object",
-                            "$ref": "#/definitions/models.Menu"
+                            "$ref": "#/definitions/system.Menu"
                         }
                     }
                 ],
@@ -1300,154 +644,6 @@
                 }
             }
         },
-        "/api/v1/operlog": {
-            "post": {
-                "security": [
-                    {
-                        "Bearer": []
-                    }
-                ],
-                "description": "获取JSON",
-                "consumes": [
-                    "application/json"
-                ],
-                "tags": [
-                    "操作日志"
-                ],
-                "summary": "添加操作日志",
-                "parameters": [
-                    {
-                        "description": "data",
-                        "name": "data",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "object",
-                            "$ref": "#/definitions/models.SysOperLog"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{\"code\": -1, \"message\": \"添加失败\"}",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/v1/operlog/{infoId}": {
-            "get": {
-                "security": [
-                    {
-                        "": []
-                    }
-                ],
-                "description": "获取JSON",
-                "tags": [
-                    "登录日志"
-                ],
-                "summary": "通过编码获取登录日志",
-                "parameters": [
-                    {
-                        "type": "integer",
-                        "description": "infoId",
-                        "name": "infoId",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{\"code\": 200, \"data\": [...]}",
-                        "schema": {
-                            "$ref": "#/definitions/app.Response"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/v1/operlog/{operId}": {
-            "delete": {
-                "description": "删除数据",
-                "tags": [
-                    "操作日志"
-                ],
-                "summary": "批量删除操作日志",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "以逗号（,）分割的operId",
-                        "name": "operId",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{\"code\": -1, \"message\": \"删除失败\"}",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/v1/operloglist": {
-            "get": {
-                "security": [
-                    {
-                        "": []
-                    }
-                ],
-                "description": "获取JSON",
-                "tags": [
-                    "登录日志"
-                ],
-                "summary": "登录日志列表",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "status",
-                        "name": "status",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
-                        "description": "dictCode",
-                        "name": "dictCode",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
-                        "description": "dictType",
-                        "name": "dictType",
-                        "in": "query"
-                    },
-                    {
-                        "type": "integer",
-                        "description": "页条数",
-                        "name": "pageSize",
-                        "in": "query"
-                    },
-                    {
-                        "type": "integer",
-                        "description": "页码",
-                        "name": "pageIndex",
-                        "in": "query"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{\"code\": 200, \"data\": [...]}",
-                        "schema": {
-                            "$ref": "#/definitions/app.Response"
-                        }
-                    }
-                }
-            }
-        },
         "/api/v1/post": {
             "get": {
                 "security": [
@@ -1463,20 +659,26 @@
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "name",
-                        "name": "name",
+                        "description": "postName",
+                        "name": "postName",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "id",
-                        "name": "id",
+                        "description": "postCode",
+                        "name": "postCode",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "position",
-                        "name": "position",
+                        "description": "postId",
+                        "name": "postId",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "status",
+                        "name": "status",
                         "in": "query"
                     }
                 ],
@@ -1510,8 +712,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "type": "object",
-                            "$ref": "#/definitions/models.Post"
+                            "$ref": "#/definitions/system.Post"
                         }
                     }
                 ],
@@ -1547,8 +748,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "type": "object",
-                            "$ref": "#/definitions/models.Dept"
+                            "$ref": "#/definitions/system.Dept"
                         }
                     }
                 ],
@@ -1571,9 +771,9 @@
                 ],
                 "description": "获取JSON",
                 "tags": [
-                    "字典数据"
+                    "职位"
                 ],
-                "summary": "获取字典数据",
+                "summary": "获取职位数据",
                 "parameters": [
                     {
                         "type": "integer",
@@ -1662,8 +862,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "type": "object",
-                            "$ref": "#/definitions/models.SysRole"
+                            "$ref": "#/definitions/system.SysRole"
                         }
                     }
                 ],
@@ -1692,8 +891,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "type": "object",
-                            "$ref": "#/definitions/models.SysRole"
+                            "$ref": "#/definitions/system.SysRole"
                         }
                     }
                 ],
@@ -1849,166 +1047,6 @@
                 }
             }
         },
-        "/api/v1/sys/tables/info": {
-            "put": {
-                "security": [
-                    {
-                        "Bearer": []
-                    }
-                ],
-                "description": "修改表结构",
-                "consumes": [
-                    "application/json"
-                ],
-                "tags": [
-                    "工具 - 生成表"
-                ],
-                "summary": "修改表结构",
-                "parameters": [
-                    {
-                        "description": "body",
-                        "name": "data",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "object",
-                            "$ref": "#/definitions/models.Dept"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{\"code\": -1, \"message\": \"添加失败\"}",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            },
-            "post": {
-                "security": [
-                    {
-                        "Bearer": []
-                    }
-                ],
-                "description": "添加表结构",
-                "consumes": [
-                    "application/json"
-                ],
-                "tags": [
-                    "工具 - 生成表"
-                ],
-                "summary": "添加表结构",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "tableName / 数据表名称",
-                        "name": "tables",
-                        "in": "query"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{\"code\": -1, \"message\": \"添加失败\"}",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/v1/sys/tables/info/{tableId}": {
-            "get": {
-                "security": [
-                    {
-                        "": []
-                    }
-                ],
-                "description": "获取JSON",
-                "tags": [
-                    "工具 - 生成表"
-                ],
-                "summary": "获取配置",
-                "parameters": [
-                    {
-                        "type": "integer",
-                        "description": "configKey",
-                        "name": "configKey",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{\"code\": 200, \"data\": [...]}",
-                        "schema": {
-                            "$ref": "#/definitions/app.Response"
-                        }
-                    }
-                }
-            },
-            "delete": {
-                "description": "删除表结构",
-                "tags": [
-                    "工具 - 生成表"
-                ],
-                "summary": "删除表结构",
-                "parameters": [
-                    {
-                        "type": "integer",
-                        "description": "tableId",
-                        "name": "tableId",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{\"code\": -1, \"message\": \"删除失败\"}",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/v1/sys/tables/page": {
-            "get": {
-                "description": "生成表分页列表",
-                "tags": [
-                    "工具 - 生成表"
-                ],
-                "summary": "分页列表数据",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "tableName / 数据表名称",
-                        "name": "tableName",
-                        "in": "query"
-                    },
-                    {
-                        "type": "integer",
-                        "description": "pageSize / 页条数",
-                        "name": "pageSize",
-                        "in": "query"
-                    },
-                    {
-                        "type": "integer",
-                        "description": "pageIndex / 页码",
-                        "name": "pageIndex",
-                        "in": "query"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{\"code\": 200, \"data\": [...]}",
-                        "schema": {
-                            "$ref": "#/definitions/app.Response"
-                        }
-                    }
-                }
-            }
-        },
         "/api/v1/sysUser": {
             "get": {
                 "security": [
@@ -2046,8 +1084,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "type": "object",
-                            "$ref": "#/definitions/models.SysUser"
+                            "$ref": "#/definitions/system.SysUser"
                         }
                     }
                 ],
@@ -2139,8 +1176,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "type": "object",
-                            "$ref": "#/definitions/models.SysUser"
+                            "$ref": "#/definitions/system.SysUser"
                         }
                     }
                 ],
@@ -2243,8 +1279,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "type": "object",
-                            "$ref": "#/definitions/models.Login"
+                            "$ref": "#/definitions/system.Login"
                         }
                     }
                 ],
@@ -2403,8 +1438,7 @@
                     "example": 200
                 },
                 "data": {
-                    "description": "数据集",
-                    "type": "object"
+                    "description": "数据集"
                 },
                 "msg": {
                     "description": "消息",
@@ -2412,25 +1446,19 @@
                 }
             }
         },
-        "models.Dept": {
+        "system.Dept": {
             "type": "object",
             "properties": {
                 "children": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/models.Dept"
+                        "$ref": "#/definitions/system.Dept"
                     }
                 },
                 "createBy": {
                     "type": "string"
                 },
-                "createdAt": {
-                    "type": "string"
-                },
-                "dataScope": {
-                    "type": "string"
-                },
-                "deletedAt": {
+                "create_time": {
                     "type": "string"
                 },
                 "deptId": {
@@ -2450,7 +1478,7 @@
                 },
                 "leader": {
                     "description": "负责人",
-                    "type": "string"
+                    "type": "integer"
                 },
                 "params": {
                     "type": "string"
@@ -2474,69 +1502,23 @@
                 "updateBy": {
                     "type": "string"
                 },
-                "updatedAt": {
+                "update_time": {
                     "type": "string"
                 }
             }
         },
-        "models.DictType": {
-            "type": "object",
-            "properties": {
-                "createBy": {
-                    "description": "创建者",
-                    "type": "string"
-                },
-                "createdAt": {
-                    "type": "string"
-                },
-                "dataScope": {
-                    "type": "string"
-                },
-                "deletedAt": {
-                    "type": "string"
-                },
-                "dictId": {
-                    "type": "integer"
-                },
-                "dictName": {
-                    "description": "字典名称",
-                    "type": "string"
-                },
-                "dictType": {
-                    "description": "字典类型",
-                    "type": "string"
-                },
-                "params": {
-                    "type": "string"
-                },
-                "remark": {
-                    "description": "备注",
-                    "type": "string"
-                },
-                "status": {
-                    "description": "状态",
-                    "type": "string"
-                },
-                "updateBy": {
-                    "description": "更新者",
-                    "type": "string"
-                },
-                "updatedAt": {
-                    "type": "string"
-                }
-            }
-        },
-        "models.Login": {
+        "system.Login": {
             "type": "object",
             "required": [
-                "code",
                 "password",
-                "username",
-                "uuid"
+                "username"
             ],
             "properties": {
                 "code": {
                     "type": "string"
+                },
+                "loginType": {
+                    "type": "integer"
                 },
                 "password": {
                     "type": "string"
@@ -2549,7 +1531,7 @@
                 }
             }
         },
-        "models.LoginLog": {
+        "system.LoginLog": {
             "type": "object",
             "properties": {
                 "browser": {
@@ -2560,14 +1542,7 @@
                     "description": "创建人",
                     "type": "string"
                 },
-                "createdAt": {
-                    "type": "string"
-                },
-                "dataScope": {
-                    "description": "数据",
-                    "type": "string"
-                },
-                "deletedAt": {
+                "create_time": {
                     "type": "string"
                 },
                 "infoId": {
@@ -2612,7 +1587,7 @@
                     "description": "更新者",
                     "type": "string"
                 },
-                "updatedAt": {
+                "update_time": {
                     "type": "string"
                 },
                 "username": {
@@ -2621,7 +1596,7 @@
                 }
             }
         },
-        "models.Menu": {
+        "system.Menu": {
             "type": "object",
             "properties": {
                 "action": {
@@ -2633,7 +1608,7 @@
                 "children": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/models.Menu"
+                        "$ref": "#/definitions/system.Menu"
                     }
                 },
                 "component": {
@@ -2642,13 +1617,7 @@
                 "createBy": {
                     "type": "string"
                 },
-                "createdAt": {
-                    "type": "string"
-                },
-                "dataScope": {
-                    "type": "string"
-                },
-                "deletedAt": {
+                "create_time": {
                     "type": "string"
                 },
                 "icon": {
@@ -2699,7 +1668,7 @@
                 "updateBy": {
                     "type": "string"
                 },
-                "updatedAt": {
+                "update_time": {
                     "type": "string"
                 },
                 "visible": {
@@ -2707,19 +1676,13 @@
                 }
             }
         },
-        "models.Post": {
+        "system.Post": {
             "type": "object",
             "properties": {
                 "createBy": {
                     "type": "string"
                 },
-                "createdAt": {
-                    "type": "string"
-                },
-                "dataScope": {
-                    "type": "string"
-                },
-                "deletedAt": {
+                "create_time": {
                     "type": "string"
                 },
                 "params": {
@@ -2752,167 +1715,12 @@
                 "updateBy": {
                     "type": "string"
                 },
-                "updatedAt": {
+                "update_time": {
                     "type": "string"
                 }
             }
         },
-        "models.SysConfig": {
-            "type": "object",
-            "properties": {
-                "configId": {
-                    "description": "编码",
-                    "type": "integer"
-                },
-                "configKey": {
-                    "description": "参数键名",
-                    "type": "string"
-                },
-                "configName": {
-                    "description": "参数名称",
-                    "type": "string"
-                },
-                "configType": {
-                    "description": "是否系统内置",
-                    "type": "string"
-                },
-                "configValue": {
-                    "description": "参数键值",
-                    "type": "string"
-                },
-                "createBy": {
-                    "type": "string"
-                },
-                "createdAt": {
-                    "type": "string"
-                },
-                "dataScope": {
-                    "type": "string"
-                },
-                "deletedAt": {
-                    "type": "string"
-                },
-                "params": {
-                    "type": "string"
-                },
-                "remark": {
-                    "description": "备注",
-                    "type": "string"
-                },
-                "updateBy": {
-                    "type": "string"
-                },
-                "updatedAt": {
-                    "type": "string"
-                }
-            }
-        },
-        "models.SysOperLog": {
-            "type": "object",
-            "properties": {
-                "businessType": {
-                    "description": "操作类型",
-                    "type": "string"
-                },
-                "businessTypes": {
-                    "type": "string"
-                },
-                "createBy": {
-                    "description": "创建人",
-                    "type": "string"
-                },
-                "createdAt": {
-                    "type": "string"
-                },
-                "dataScope": {
-                    "description": "数据",
-                    "type": "string"
-                },
-                "deletedAt": {
-                    "type": "string"
-                },
-                "deptName": {
-                    "description": "部门名称",
-                    "type": "string"
-                },
-                "jsonResult": {
-                    "description": "返回数据",
-                    "type": "string"
-                },
-                "latencyime": {
-                    "description": "耗时",
-                    "type": "string"
-                },
-                "method": {
-                    "description": "函数",
-                    "type": "string"
-                },
-                "operId": {
-                    "description": "日志编码",
-                    "type": "integer"
-                },
-                "operIp": {
-                    "description": "客户端ip",
-                    "type": "string"
-                },
-                "operLocation": {
-                    "description": "访问位置",
-                    "type": "string"
-                },
-                "operName": {
-                    "description": "操作者",
-                    "type": "string"
-                },
-                "operParam": {
-                    "description": "请求参数",
-                    "type": "string"
-                },
-                "operTime": {
-                    "description": "操作时间",
-                    "type": "string"
-                },
-                "operUrl": {
-                    "description": "访问地址",
-                    "type": "string"
-                },
-                "operatorType": {
-                    "description": "操作类型",
-                    "type": "string"
-                },
-                "params": {
-                    "description": "参数",
-                    "type": "string"
-                },
-                "remark": {
-                    "description": "备注",
-                    "type": "string"
-                },
-                "requestMethod": {
-                    "description": "请求方式",
-                    "type": "string"
-                },
-                "status": {
-                    "description": "操作状态",
-                    "type": "string"
-                },
-                "title": {
-                    "description": "操作模块",
-                    "type": "string"
-                },
-                "updateBy": {
-                    "description": "更新者",
-                    "type": "string"
-                },
-                "updatedAt": {
-                    "type": "string"
-                },
-                "userAgent": {
-                    "description": "ua",
-                    "type": "string"
-                }
-            }
-        },
-        "models.SysRole": {
+        "system.SysRole": {
             "type": "object",
             "properties": {
                 "admin": {
@@ -2921,13 +1729,7 @@
                 "createBy": {
                     "type": "string"
                 },
-                "createdAt": {
-                    "type": "string"
-                },
-                "dataScope": {
-                    "type": "string"
-                },
-                "deletedAt": {
+                "create_time": {
                     "type": "string"
                 },
                 "deptIds": {
@@ -2974,12 +1776,12 @@
                 "updateBy": {
                     "type": "string"
                 },
-                "updatedAt": {
+                "update_time": {
                     "type": "string"
                 }
             }
         },
-        "models.SysUser": {
+        "system.SysUser": {
             "type": "object",
             "properties": {
                 "avatar": {
@@ -2989,13 +1791,7 @@
                 "createBy": {
                     "type": "string"
                 },
-                "createdAt": {
-                    "type": "string"
-                },
-                "dataScope": {
-                    "type": "string"
-                },
-                "deletedAt": {
+                "create_time": {
                     "type": "string"
                 },
                 "deptId": {
@@ -3047,7 +1843,7 @@
                 "updateBy": {
                     "type": "string"
                 },
-                "updatedAt": {
+                "update_time": {
                     "type": "string"
                 },
                 "userId": {
@@ -3058,13 +1854,6 @@
                     "type": "string"
                 }
             }
-        }
-    },
-    "securityDefinitions": {
-        "Bearer": {
-            "type": "apiKey",
-            "name": "Authorization",
-            "in": "header"
         }
     }
 }

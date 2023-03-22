@@ -11,3 +11,6 @@ mysql/data
 redis/data
 data/
 needinit
+build/
+ferry_web
+mysql/

@@ -7,5 +7,7 @@ func Setup() {
 	if dbType == "mysql" {
 		var db = new(Mysql)
 		db.Setup()
-	}
+	} //else if dbType == "sqlite" {
+	//	var db = SqlLite
+	//}
 }

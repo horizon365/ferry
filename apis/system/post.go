@@ -52,9 +52,9 @@ func GetPostList(c *gin.Context) {
 	app.PageOK(c, result, count, pageIndex, pageSize, "")
 }
 
-// @Summary 获取字典数据
+// @Summary 获取职位数据
 // @Description 获取JSON
-// @Tags 字典数据
+// @Tags 职位
 // @Param postId path int true "postId"
 // @Success 200 {object} app.Response "{"code": 200, "data": [...]}"
 // @Router /api/v1/post/{postId} [get]
