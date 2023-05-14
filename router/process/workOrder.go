@@ -19,6 +19,7 @@ func RegisterWorkOrderRouter(v1 *gin.RouterGroup, authMiddleware *jwt.GinJWTMidd
 		workOrderRouter.POST("/create", process.CreateWorkOrder)
 		workOrderRouter.GET("/list", process.WorkOrderList)
 		workOrderRouter.POST("/handle", process.ProcessWorkOrder)
+		workOrderRouter.POST("/save", process.SaveWorkOrder)
 		workOrderRouter.GET("/unity", process.UnityWorkOrder)
 		workOrderRouter.POST("/inversion", process.InversionWorkOrder)
 		workOrderRouter.GET("/urge", process.UrgeWorkOrder)

@@ -395,6 +395,29 @@ func (h *Handle) commonProcessing(c *gin.Context) (err error) {
 	return
 }
 
+func (h *Handle) SaveWorkOrder(
+	tpls []map[string]interface{},
+) (err error) {
+	for _, t := range tpls {
+		var (
+			tplValue []byte
+		)
+		tplValue, err = json.Marshal(t["tplValue"])
+		if err != nil {
+			//h.tx.Rollback()
+			return
+		}
+		db := orm.Eloquent.Model(&process.TplData{})
+		db.LogMode(true)
+		err = db.Where("id = ?", t["tplDataId"]).Update("form_data", tplValue).Error
+		if err != nil {
+			//h.tx.Rollback()
+			return
+		}
+	}
+	return
+}
+
 func (h *Handle) HandleWorkOrder(
 	c *gin.Context,
 	workOrderId int,
